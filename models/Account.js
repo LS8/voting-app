@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+mongoose.Promise = global.Promise;
+
 // Option Schema
 const OptionSchema = new Schema({
   description: {
