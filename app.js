@@ -1,13 +1,13 @@
 const express = require('express');
 
 // Routes
-const userAuthentication = require('./routes/userAuthentication');
+const account = require('./routes/account');
 const userProfile = require('./routes/userProfile');
 
 const app = express();
 
 // Use Routes
-app.use('/user', userAuthentication);
+app.use('/account', account);
 app.use('/profile', userProfile);
 
 const port = 3000;
