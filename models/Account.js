@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
@@ -63,5 +64,22 @@ module.exports.getAccountByUsername = function (username, callback) {
 };
 
 module.exports.addAccount = function (newAccount, callback) {
-  newAccount.save(callback);
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(newAccount.password, salt, function (err, hash) {
+      if (err) {
+        throw err;
+      }
+      newAccount.password = hash;
+      newAccount.save(callback);
+    });
+  });
+};
+
+module.exports.checkPassword = function (passwordToCheck, hash, callback) {
+  bcrypt.compare(passwordToCheck, hash, function (err, res) {
+    if (err) {
+      throw err;
+    }
+    callback(null, res);
+  });
 };
