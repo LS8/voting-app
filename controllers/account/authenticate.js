@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+const secret = require('../../config/authentication').secret;
 const Account = require('../../models/Account');
 
 module.exports = (req, res) => {
@@ -11,12 +13,27 @@ module.exports = (req, res) => {
     if (!account) {
       res.json({ success: false, msg: 'Account not found' });
     }
-    Account.checkPassword(password, account.password, (err, result) => {
+    Account.checkPassword(password, account.password, (err, isMatch) => {
       if (err) {
         throw err;
       }
-      if (result) {
-        res.json({ success: true, msg: 'Login successfull' });
+      // authentication successfull
+      if (isMatch) {
+        // create token
+        const token = jwt.sign(account, secret, {
+          expiresIn: 604800 // one Week
+        });
+        res.json({
+          success: true,
+          msg: 'Login successfull',
+          token: `JWT ${token}`,
+          account: {
+            id: account._id,
+            name: account.name,
+            username: account.username,
+            email: account.email
+          }
+         });
       } else {
         res.json({ success: false, msg: 'Wrong password' });
       }
