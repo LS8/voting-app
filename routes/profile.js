@@ -1,8 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const Router = express.Router();
-const polls = require('../controllers/profile/polls');
+const poll = require('../controllers/profile/poll');
 
-Router.get('/polls', passport.authenticate('jwt', { session: false }), polls);
+Router.post('/poll', passport.authenticate('jwt', { session: false }), poll);
 
 module.exports = Router;
