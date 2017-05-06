@@ -2,7 +2,6 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const Account = require('../models/Account');
 
-
 const secret = 'B4C0/\\';
 
 module.exports = {
@@ -13,7 +12,6 @@ module.exports = {
     opts.secretOrKey = secret;
     passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
       Account.getAccountById(jwt_payload._doc._id, (err, account) => {
-        console.log(jwt_payload);
         if (err) {
           return done(err, false);
         }
