@@ -7,7 +7,7 @@ const config = require('./config/database');
 
 // Routes
 const account = require('./routes/account');
-const userProfile = require('./routes/userProfile');
+const profile = require('./routes/profile');
 
 
 // Connect To Database
@@ -35,16 +35,10 @@ require('./config/authentication').passportStrategy(passport);
 
 // Use Routes
 app.use('/account', account);
-app.use('/profile', userProfile);
+app.use('/profile', profile);
 
 const port = 3000;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-app.get('/profile', passport.authenticate('jwt', { session: false}),
-    function(req, res) {
-        res.json({ msg: 'authe4tnicated route' });
-    }
-);
