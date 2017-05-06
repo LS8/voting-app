@@ -40,4 +40,17 @@ const Poll = module.exports = mongoose.model('Poll', PollSchema);
 
 module.exports.save = function (newPoll, callback) {
   newPoll.save(callback);
-}
+};
+
+module.exports.getAllPolls = function (callback) {
+  // callback takes: (err, docs)
+  Poll.find({}, callback);
+};
+
+module.exports.getRecentPolls = function (count, callback) {
+  Poll.find({}).limit(count).sort({ date: -1 }).exec(callback);
+};
+
+module.exports.getPollsByUser = function (user, callback) {
+  Poll.find({ author: user }, callback);
+};
