@@ -6,6 +6,6 @@ const index = require('../controllers/profile/index');
 
 Router.get('/', passport.authenticate('jwt', { session: false }), index);
 
-Router.post('/poll', passport.authenticate('jwt', { session: false }), poll);
+Router.post('/newpoll', passport.authenticate('jwt', { session: false }), poll);
 
 module.exports = Router;
