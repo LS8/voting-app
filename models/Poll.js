@@ -48,7 +48,7 @@ module.exports.getAllPolls = function (callback) {
 };
 
 module.exports.getRecentPolls = function (count, callback) {
-  Poll.find({}).limit(count).sort({ date: -1 }).exec(callback);
+  Poll.find({}).limit(count).sort({ createdOn: -1 }).exec(callback);
 };
 
 module.exports.getPollsByUser = function (user, callback) {
