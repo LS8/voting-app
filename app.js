@@ -8,6 +8,7 @@ const config = require('./config/database');
 // Routes
 const account = require('./routes/account');
 const profile = require('./routes/profile');
+const polls = require('./routes/polls');
 
 
 // Connect To Database
@@ -36,6 +37,7 @@ require('./config/authentication').passportStrategy(passport);
 // Use Routes
 app.use('/account', account);
 app.use('/profile', profile);
+app.use('/polls', polls);
 
 const port = 3000;
 
