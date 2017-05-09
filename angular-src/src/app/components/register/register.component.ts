@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   email: string;
 
+  validUsername: boolean;
   validEmail: boolean;
 
 
@@ -24,8 +25,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   isValid(value: boolean) {
     if (value == undefined) return;
@@ -38,6 +38,9 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password
     };
+
+    this.validUsername = undefined;
+    this.validEmail = undefined;
 
     // Required Fields
     if (!this.validateService.validateRegister(account)) {
@@ -58,7 +61,8 @@ export class RegisterComponent implements OnInit {
         this.flashMessage.show('You are now registered and can log in', { cssClass: 'alert alert-success', timeout: 3000 })
         this.router.navigate(['/login']);
       } else {
-        this.flashMessage.show(data.msg, { cssClass: 'alert alert-danger', timeout: 3000 })
+        this.flashMessage.show(data.msg, { cssClass: 'alert alert-danger', timeout: 3000 });
+        data.status === 2 ? this.validUsername = false : null;
         this.router.navigate(['/register']);
       }
     })
