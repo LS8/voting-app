@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     if (err) {
       res.json({ success: false, msg: 'Failed to register' });
     } else if (alreadyRegistered) {
-      res.json({ success: false, msg: 'Usernamy already exists' });
+      res.json({ success: false, msg: 'Username already exists' });
     } else if (account) {
       res.json({ success: true, msg: 'Account registered' });
     } else {
