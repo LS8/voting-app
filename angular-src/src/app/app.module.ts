@@ -7,6 +7,7 @@ import { Router } from './app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,7 +32,8 @@ import { RegisterComponent } from './components/register/register.component';
     FlashMessagesModule
   ],
   providers: [
-    ValidateService
+    ValidateService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
