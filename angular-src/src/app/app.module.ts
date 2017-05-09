@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { Router } from './app.routing';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
+import { ValidateService } from './services/validate.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -24,9 +27,12 @@ import { RegisterComponent } from './components/register/register.component';
     FormsModule,
     HttpModule,
     Router,
-    MaterializeModule
+    MaterializeModule,
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [
+    ValidateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
