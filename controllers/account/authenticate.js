@@ -29,9 +29,7 @@ module.exports = (req, res) => {
             token: `JWT ${token}`,
             account: {
               id: account._id,
-              name: account.name,
               username: account.username,
-              email: account.email
             }
           });
         } else {

@@ -3,12 +3,12 @@
     <a routerLink='' class="brand-logo">Logo</a>
     <a href="#" data-activates="mobile-demo" materialize="sideNav" [materializeParams]="[{closeOnClick:true}]" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li><a routerLink='login'>Login</a></li>
-      <li><a routerLink='register'>Register</a></li>
+      <li routerLinkActive="active"><a routerLink='login'>Login</a></li>
+      <li routerLinkActive="active"><a routerLink='register'>Register</a></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li><a routerLink='login'>Login</a></li>
-      <li><a routerLink='register'>Register</a></li>
+      <li routerLinkActive="active"><a routerLink='login'>Login</a></li>
+      <li routerLinkActive="active"><a routerLink='register'>Register</a></li>
     </ul>
   </div>
 </nav>  

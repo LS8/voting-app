@@ -6,15 +6,7 @@ mongoose.Promise = global.Promise;
 
 // Account Schema
 const AccountSchema =  new Schema({
-  name: {
-    type: String,
-    required: true
-  },
   username: {
-    type: String,
-    required: true
-  },
-  email: {
     type: String,
     required: true
   },

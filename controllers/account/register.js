@@ -2,9 +2,7 @@ const Account = require('../../models/Account');
 
 module.exports = (req, res) => {
   const newAccount = new Account({
-    name: req.body.name,
     username: req.body.username,
-    email: req.body.email,
     password: req.body.password
   });
 
