@@ -32,15 +32,23 @@ module.exports.getAccountByUsername = function (username, callback) {
 };
 
 module.exports.addAccount = function (newAccount, callback) {
-  bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash(newAccount.password, salt, function (err, hash) {
-      if (err) {
-        throw err;
-      }
-      newAccount.password = hash;
-      newAccount.save(callback);
-    });
-  });
+  Account.findOne({ username: newAccount.username }, (err, account) => {
+    if (err) {
+      throw err;
+    } else if (account) {
+      callback(null, null, null, true);
+    } else {
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(newAccount.password, salt, function (err, hash) {
+          if (err) {
+            throw err;
+          }
+          newAccount.password = hash;
+          newAccount.save(callback);
+        });
+      });
+    }
+  })
 };
 
 module.exports.checkPassword = function (passwordToCheck, hash, callback) {
