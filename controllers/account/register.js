@@ -11,7 +11,7 @@ module.exports = (req, res) => {
     if (err) {
       res.json({ success: false, msg: 'Failed to register' });
     } else {
-      res.json({ success: true, msg: 'User registered' });
+      res.json({ success: true, msg: 'Account registered' });
     }
   });
 }
