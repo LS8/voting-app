@@ -5,7 +5,15 @@ export class ValidateService {
 
   constructor() { }
 
-  validateRegister(account) {
+  validateLogin (account) {
+    if (account.username == undefined || account.password == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateRegister (account) {
     if (account.username == undefined || account.password == undefined || account.email == undefined) {
       return false;
     } else {
@@ -13,7 +21,7 @@ export class ValidateService {
     }
   }
 
-  validateEmail(email) {
+  validateEmail (email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
