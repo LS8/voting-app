@@ -3,14 +3,16 @@
     <a routerLink='' class="brand-logo">Logo</a>
     <a href="#" data-activates="mobile-demo" materialize="sideNav" [materializeParams]="[{closeOnClick:true}]" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li routerLinkActive="active"><a routerLink='login'>Login</a></li>
-      <li routerLinkActive="active"><a routerLink='register'>Register</a></li>
-      <li><a (click)="onLogoutClick()">Logout</a></li>
+      <li *ngIf="auth.loggedIn()" routerLinkActive="active"><a routerLink='profile'>Profile</a></li>
+      <li *ngIf="!auth.loggedIn()" routerLinkActive="active"><a routerLink='login'>Login</a></li>
+      <li *ngIf="!auth.loggedIn()" routerLinkActive="active"><a routerLink='register'>Register</a></li>
+      <li *ngIf="auth.loggedIn()"><a (click)="onLogoutClick()">Logout</a></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li routerLinkActive="active"><a routerLink='login'>Login</a></li>
-      <li routerLinkActive="active"><a routerLink='register'>Register</a></li>
-      <li><a (click)="onLogoutClick()">Logout</a></li>
+      <li *ngIf="auth.loggedIn()" routerLinkActive="active"><a routerLink='profile'>Profile</a></li>
+      <li *ngIf="!auth.loggedIn()" routerLinkActive="active"><a routerLink='login'>Login</a></li>
+      <li *ngIf="!auth.loggedIn()" routerLinkActive="active"><a routerLink='register'>Register</a></li>
+      <li *ngIf="auth.loggedIn()"><a (click)="onLogoutClick()">Logout</a></li>
     </ul>
   </div>
 </nav>  
