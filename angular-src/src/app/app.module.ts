@@ -8,6 +8,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedInGuard } from './guards/loggedIn.guard';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -35,7 +37,9 @@ import { ProfileComponent } from './components/profile/profile.component';
   ],
   providers: [
     ValidateService,
-    AuthService
+    AuthService,
+    AuthGuard,
+    LoggedInGuard
   ],
   bootstrap: [AppComponent]
 })
