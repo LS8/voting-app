@@ -11,7 +11,7 @@ module.exports = (req, res) => {
       throw err;
     }
     if (!account) {
-      res.json({ success: false, msg: 'Account not found' });
+      res.json({ success: false, msg: 'Account not found', status: 2 });
     } else {
       Account.checkPassword(password, account.password, (err, isMatch) => {
         if (err) {
@@ -30,10 +30,12 @@ module.exports = (req, res) => {
             account: {
               id: account._id,
               username: account.username,
-            }
+              email: account.email
+            },
+            status: 0
           });
         } else {
-          res.json({ success: false, msg: 'Wrong password' });
+          res.json({ success: false, msg: 'Wrong password', status: 1 });
         }
       })
     }
