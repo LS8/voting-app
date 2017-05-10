@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<div class="section">
+  <div class="row">
+    <form (ngSubmit)="onLoginSubmit()" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="username" placeholder="Username" required name="username" type="text" [ngClass]="isValid(validUsername)" class="validate">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="password" name="password" required type="password" [ngClass]="isValid(validPassword)" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <button type="submit" class="btn waves-effect waves-light">Login
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
