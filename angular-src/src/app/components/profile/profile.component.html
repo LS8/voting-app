@@ -1,12 +1,19 @@
 <div *ngIf="polls">
   <div *ngIf="polls.length">
-    <h2>Your polls:</h2>
-    <ul>
-      <li *ngFor="let poll of polls">{{poll.title}}</li>
-    </ul>
+    <h2 class="header center-align">Your polls</h2>
+    <div *ngFor="let poll of polls">
+      <div class="row">
+        <div class="col center-align s12 m8 offset-m2 l6 offset-l3 card-panel grey lighten-5 z-depth-1">
+          <p>
+            {{poll.title}}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
   <div *ngIf="!polls.length">
     <h2>Nothing to see here...</h2>
     <h2>Click below to create a new poll</h2>
   </div>
 </div>
+  <!--Pie Chart--><!--<canvas baseChart class="poll-small" [data]=poll.votes [labels]=poll.labels chartType="pie"></canvas>-->
