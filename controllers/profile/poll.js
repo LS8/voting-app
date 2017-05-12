@@ -4,7 +4,8 @@ module.exports = (req, res) => {
   const poll = new Poll({
     title: req.body.title,
     author: req.body.author,
-    options: req.body.options
+    labels: req.body.labels,
+    votes: req.body.votes
   });
 
   Poll.save(poll, (err, poll) => {
