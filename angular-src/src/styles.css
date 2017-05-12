@@ -81,3 +81,6 @@
   border-bottom: 1px solid #F44336 !important;
   box-shadow: 0 1px 0 0 #F44336 !important;
 }
+.header {
+  color: #ee6e73;
+}
