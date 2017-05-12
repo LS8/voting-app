@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { Router } from './app.routing';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import 'chart.js/src/chart.js';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
@@ -33,7 +35,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpModule,
     Router,
     MaterializeModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    ChartsModule
   ],
   providers: [
     ValidateService,
