@@ -22,8 +22,12 @@ const PollSchema = new Schema({
     type: String,
     required: true
   },
-  options: {
-    type: [OptionSchema],
+  labels: {
+    type: [String],
+    required: true
+  },
+  votes: {
+    type: [Number],
     required: true
   },
   author: {
