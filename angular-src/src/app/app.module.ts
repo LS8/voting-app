@@ -10,6 +10,7 @@ import 'chart.js/src/chart.js';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { PollService } from './services/poll.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedInGuard } from './guards/loggedIn.guard';
 
@@ -19,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PollComponent } from './components/poll/poll.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    PollComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { ProfileComponent } from './components/profile/profile.component';
   providers: [
     ValidateService,
     AuthService,
+    PollService,
     AuthGuard,
     LoggedInGuard
   ],
