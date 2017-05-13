@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PollComponent } from './components/poll/poll.component';
 
 const appRoutes: Routes = [
   {
@@ -25,6 +26,11 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'polls/:id',
+    component: PollComponent,
     canActivate: [AuthGuard]
   },
   {
