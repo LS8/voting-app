@@ -47,7 +47,7 @@ module.exports.save = function (newPoll, callback) {
 };
 
 module.exports.getPollById = function (id, callback) {
-  Poll.find({ _id: id }, callback);
+  Poll.findOne({ _id: id }, callback);
 }
 
 module.exports.getAllPolls = function (callback) {
