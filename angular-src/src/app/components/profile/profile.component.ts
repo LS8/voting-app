@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.auth.getProfile().subscribe(profile => {
         this.polls = profile.polls;
-        console.log(this.polls);
     },
     err => {
       console.log(err);
