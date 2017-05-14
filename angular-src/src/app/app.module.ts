@@ -20,7 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { PollComponent } from './components/poll/poll.component';
+import { PollDetailComponent } from './components/poll-detail/poll-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { PollComponent } from './components/poll/poll.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    PollComponent
+    PollDetailComponent
   ],
   imports: [
     BrowserModule,
