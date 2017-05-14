@@ -27,7 +27,6 @@ export class ProfileComponent implements OnInit {
   }
 
   goToDetailPage(clickedPoll) {
-    console.log(clickedPoll);
     this.router.navigate(['polls', clickedPoll._id]);
   }
 
