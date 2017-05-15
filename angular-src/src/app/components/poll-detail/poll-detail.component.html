@@ -1,3 +1,7 @@
-<p>
-  poll-detail works!
-</p>
+<div class="row">
+  <div class="col offset-m2 l6 offset-l3 s12 m8 l6" *ngIf="pollToDisplay">
+    <h2 class="header center-align">{{pollToDisplay.title}}</h2>
+    <canvas baseChart class="poll-small" [data]=pollToDisplay.votes [labels]=pollToDisplay.labels chartType="doughnut">
+    </canvas>
+  </div>
+</div>
