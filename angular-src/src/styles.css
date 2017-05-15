@@ -84,3 +84,10 @@
 .header {
   color: #ee6e73;
 }
+.poll:hover {
+  color: #ee6e73;
+  cursor: pointer;
+  -webkit-transition: .2s linear;
+  -moz-transition: .2s linear;
+  transition: .2s linear;
+}

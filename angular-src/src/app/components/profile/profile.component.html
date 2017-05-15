@@ -3,7 +3,7 @@
     <h2 class="header center-align">Your polls</h2>
     <div *ngFor="let poll of polls">
       <div (click)=goToDetailPage(poll) class="row">
-        <div class="col center-align s12 m8 offset-m2 l6 offset-l3 card-panel grey lighten-5 z-depth-1">
+        <div class="poll col center-align s12 m8 offset-m2 l6 offset-l3 card-panel grey lighten-5 z-depth-1">
           <p>
             {{poll.title}}
           </p>
