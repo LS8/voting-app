@@ -1,7 +1,19 @@
+<div class="poll-detail__section">
 <div class="row">
-  <div class="col offset-m2 l6 offset-l3 s12 m8 l6" *ngIf="pollToDisplay">
-    <h2 class="header center-align">{{pollToDisplay.title}}</h2>
-    <canvas baseChart class="poll-small" [data]=pollToDisplay.votes [labels]=pollToDisplay.labels chartType="doughnut">
-    </canvas>
+<div class="col center-align s12 m6">
+  <h2 class="header center-align">{{pollToDisplay.title}}</h2>
+  <div class="input-field" *ngIf="pollToDisplay">
+    <select materialize="material_select">
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>I'd like to vote for:</label>
   </div>
+  <a class="waves-effect waves-light btn poll-detail__btn"><i class="material-icons right">send</i>Vote</a>
 </div>
+<div class="col s12 m6" *ngIf="pollToDisplay">
+  <canvas baseChart class="poll-small" [data]=pollToDisplay.votes [labels]=pollToDisplay.labels chartType="doughnut">
+  </canvas>
+</div></div></div>
