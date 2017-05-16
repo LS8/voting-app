@@ -91,3 +91,13 @@
   -moz-transition: .2s linear;
   transition: .2s linear;
 }
+.poll-detail__section {
+  margin-top: 36px;
+}
+.poll-detail__section h2 {
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+.poll-detail__btn {
+  margin-bottom: 36px;
+}
