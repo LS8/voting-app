@@ -10,6 +10,7 @@ import { PollService } from '../../services/poll.service';
 })
 export class PollDetailComponent implements OnInit {
   pollId: string;
+  selectedOption;
   pollToDisplay;
 
   constructor(
@@ -30,6 +31,11 @@ export class PollDetailComponent implements OnInit {
       console.log(err);
       return false;
     });
+  }
+
+  onVoteSubmit() {
+    console.log('submitted boy');
+    console.log(this.selectedOption);
   }
 
 }
