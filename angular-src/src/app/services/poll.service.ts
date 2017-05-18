@@ -14,4 +14,10 @@ export class PollService {
     return this.http.get(`http://localhost:3000/polls/${id}`, { headers: headers })
       .map(res => res.json());
   }
+
+  syncVote(id, updatedPoll) {
+    let headers = new Headers();
+    return this.http.post(`http://localhost:3000/polls/${id}`, updatedPoll, { headers: headers})
+      .map(res => res.json());
+  }
 }
