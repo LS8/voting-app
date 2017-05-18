@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col center-align s12 m6">
       <h2 class="header center-align">{{pollToDisplay.title}}</h2>
-        <div class="input-field" *ngIf="pollToDisplay">
-      <form (ngSubmit)="onVoteSubmit()">
-          <select materialize="material_select">
-      <option value="" disabled selected>Choose your option</option>
-      <option *ngFor="let option of pollToDisplay.labels; let i = index" name="option">{{option}}</option>
-    </select>
+      <div class="input-field" *ngIf="pollToDisplay">
+        <form (ngSubmit)="onVoteSubmit()">
+          <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" materialize="material_select">
+            <option value="" disabled selected>Choose your option</option>
+            <option *ngFor="let option of pollToDisplay.labels; let i = index" [ngValue]="i" name="option">{{option}}</option>
+          </select>
           <label>I'd like to vote for:</label>
-        <button type="submit" class="btn waves-effect waves-light poll-detail__btn">Vote
+          <button type="submit" class="btn waves-effect waves-light poll-detail__btn">Vote
             <i class="material-icons right">send</i>
           </button>
-      </form>
-        </div>
+        </form>
+      </div>
     </div>
     <div class="col s12 m6">
       <canvas baseChart class="poll-small" [data]=pollToDisplay.votes [labels]=pollToDisplay.labels chartType="doughnut">
       </canvas>
     </div>
   </div>
-</div>  <!--<a (click)="submitVote()" class="waves-effect waves-light btn poll-detail__btn"><i class="material-icons right">send</i>Vote</a>-->
+</div>
