@@ -1,3 +1,8 @@
 module.exports = (req, res) => {
-  res.json({ ipAddress: req.ip });
+  const ip = req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress ||
+    req.ip;
+  res.json({ ipAddress: ip });
 }
