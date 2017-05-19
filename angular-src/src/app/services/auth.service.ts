@@ -56,4 +56,11 @@ export class AuthService {
     localStorage.clear();
   }
 
+  loadIp() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/account/ip',  { headers: headers })
+      .map(res => res.json());
+  }
+
 }
