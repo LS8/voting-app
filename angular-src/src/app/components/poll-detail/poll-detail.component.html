@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col center-align s12 m6">
       <h2 class="header center-align">{{pollToDisplay.title}}</h2>
-      <div class="input-field" *ngIf="pollToDisplay">
+      <div class="input-field" *ngIf="pollToDisplay && !alreadyVoted">
         <form (ngSubmit)="onVoteSubmit()">
           <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" materialize="material_select">
             <option value="" disabled selected>Choose your option</option>
@@ -13,6 +13,9 @@
             <i class="material-icons right">send</i>
           </button>
         </form>
+      </div>
+      <div class="card-panel red-easy" *ngIf="alreadyVoted">
+        <h5 class="white-text">You already voted on this poll</h5>
       </div>
     </div>
     <div class="col s12 m6">
