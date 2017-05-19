@@ -34,6 +34,9 @@ const PollSchema = new Schema({
     type: String,
     required: true
   },
+  alreadyVoted: {
+    type: [String]
+  },
   createdOn: {
     type: Date,
     default: Date.now
@@ -52,6 +55,7 @@ module.exports.vote = function (pollId, updatedPoll, callback) {
       throw err;
     }
     poll.votes = updatedPoll.votes;
+    poll.alreadyVoted = updatedPoll.alreadyVoted;
     poll.save(callback);
   });
 };
