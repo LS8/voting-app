@@ -8,16 +8,17 @@ export class PollService {
 
   constructor(private http: Http) { }
 
-  getIndividualPoll(id) {
+  getIndividualPoll(pollId) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(`http://localhost:3000/polls/${id}`, { headers: headers })
+    return this.http.get(`http://localhost:3000/polls/${pollId}`, { headers: headers })
       .map(res => res.json());
   }
 
-  syncVote(id, updatedPoll) {
+  syncVote(pollId, updatedPoll) {
     let headers = new Headers();
-    return this.http.post(`http://localhost:3000/polls/${id}`, updatedPoll, { headers: headers})
+    return this.http.post(`http://localhost:3000/polls/${pollId}`, updatedPoll, { headers: headers})
       .map(res => res.json());
   }
+
 }
