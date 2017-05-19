@@ -17,10 +17,26 @@
       <div class="card-panel red-easy" *ngIf="alreadyVoted">
         <h5 class="white-text">You already voted on this poll</h5>
       </div>
+
     </div>
     <div class="col s12 m6">
       <canvas baseChart class="poll-small" [data]=pollToDisplay.votes [labels]=pollToDisplay.labels chartType="doughnut">
       </canvas>
+      <div class="fixed-action-btn horizontal">
+        <a class="btn-floating btn-large red">
+          <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+          <li>
+            <a materialize="tooltip" class="tooltipped btn-floating green" data-position="top" data-delay="50" data-tooltip="Add new option"><i class="material-icons">add</i></a>
+          </li>
+          <li>
+            <a materialize="tooltip" class="tooltipped btn-floating blue" data-position="top" data-delay="50" data-tooltip="Share via twitter"><i class="material-icons">forward</i></a>
+          </li>
+          <li>
+            <a materialize="tooltip" class="tooltipped btn-floating red" data-position="top" data-delay="50" data-tooltip="Delete this poll"><i class="material-icons">remove</i></a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</div>
+  </div></div>
