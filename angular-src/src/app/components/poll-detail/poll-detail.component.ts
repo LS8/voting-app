@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { PollService } from '../../services/poll.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import {MaterializeDirective,MaterializeAction} from "angular2-materialize";
+
+// TO-DO :
+//         - add new options to poll if logged in
+//         - delete poll if author
 
 @Component({
   selector: 'app-poll',
@@ -17,6 +22,13 @@ export class PollDetailComponent implements OnInit {
   pollToDisplay;
   alreadyVoted: boolean;
   user;
+  userIsAuthenticated: boolean = false;
+  userIsAuthor: boolean = false;
+  addModalActions = new EventEmitter<string | MaterializeAction>();
+  deleteModalActions = new EventEmitter<string | MaterializeAction>();
+  globalActions = new EventEmitter<string | MaterializeAction>();
+  params = [];
+  newOption: string;
 
   constructor(
     private pollService: PollService,
@@ -45,6 +57,10 @@ export class PollDetailComponent implements OnInit {
     // if user is logged in
     if (localStorage.getItem('account')) {
       this.user = JSON.parse(localStorage.getItem('account')).username;
+      this.userIsAuthenticated = true;
+      if (this.user === this.pollToDisplay.author) {
+        this.userIsAuthor = true;
+      }
       return callback();
     } else {
       // get and store ip
@@ -58,7 +74,10 @@ export class PollDetailComponent implements OnInit {
   checkAlreadyVoted() {
     this.loadUser(() => {
       // user hasn't voted yet
-      if (this.pollToDisplay.alreadyVoted.indexOf(this.user) === -1) {
+      if (this.pollToDisplay.alreadyVoted.indexOf(this.user) === -1
+        // for dev purposes only
+        || this.user === 'admin') { 
+
         this.alreadyVoted = false;
         return false;
       } else {
@@ -91,5 +110,47 @@ export class PollDetailComponent implements OnInit {
     }
   }
 
+  onOptionSubmit() {
+    if (this.newOption) {
+      // add vote & label and replace arrays with themselves to force rerender
+      this.pollToDisplay.labels.push(this.newOption);
+      this.pollToDisplay.votes.push(0);
+      // DOESNT RERENDER CORRECTLY IN THE SELECT DROP DOWN ATM!!!
+      this.pollToDisplay.labels = this.pollToDisplay.labels.slice();
+      this.pollToDisplay.votes = this.pollToDisplay.votes.slice();
+
+
+      // sync poll with the poll stored in the db
+      this.pollService.syncVote(this.pollToDisplay._id, {updatedPoll: this.pollToDisplay}).subscribe(res => {
+        if (res.success) {
+          this.flashMessage.show(`The option "${this.newOption}" has been added`, { cssClass: 'alert alert-success', timeout: 3000 });
+          // reset the new option field
+          this.newOption = "";
+          // this.router.navigate([`/polls/${this.pollToDisplay._id}`]);
+        }
+      });
+    } else {
+      this.flashMessage.show('Please enter something', { cssClass: 'alert alert-danger', timeout: 3000 });
+      return false;
+    }
+  }
+
+  deletePoll() {
+    console.log('delete poll....');
+  }
+
+  openAddModal() {
+    this.addModalActions.emit({ action: "modal", params: ['open'] });
+  }
+  closeAddModal() {
+    this.addModalActions.emit({ action: "modal", params: ['close'] });
+  }
+
+  openDeleteModal() {
+    this.deleteModalActions.emit({ action: "modal", params: ['open'] });
+  }
+  closeDeleteModal() {
+    this.deleteModalActions.emit({ action: "modal", params: ['close'] });
+  }
 
 }
