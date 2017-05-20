@@ -146,6 +146,11 @@ export class PollDetailComponent implements OnInit {
       }
     });
   }
+ 
+  shareOnTwitter() {
+    console.log('sHaRe OoN tWiiTaaH');
+    window.open(`https://twitter.com/intent/tweet?&text=${this.pollToDisplay.title} (${window.location.href})`, '_blank');
+  }
 
   openAddModal() {
     this.addModalActions.emit({ action: "modal", params: ['open'] });
