@@ -55,6 +55,7 @@ module.exports.vote = function (pollId, updatedPoll, callback) {
       throw err;
     }
     poll.votes = updatedPoll.votes;
+    poll.labels = updatedPoll.labels;
     poll.alreadyVoted = updatedPoll.alreadyVoted;
     poll.save(callback);
   });
@@ -65,7 +66,6 @@ module.exports.getPollById = function (id, callback) {
 }
 
 module.exports.getAllPolls = function (callback) {
-  // callback takes: (err, docs)
   Poll.find({}, callback);
 };
 
