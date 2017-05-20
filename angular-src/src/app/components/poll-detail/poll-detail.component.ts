@@ -136,7 +136,15 @@ export class PollDetailComponent implements OnInit {
   }
 
   deletePoll() {
-    console.log('delete poll....');
+    this.pollService.deletePoll(this.pollToDisplay._id).subscribe(res => {
+      if (res.success) {
+        this.flashMessage.show(`Your poll "${this.pollToDisplay.title}" has been deleted`, { cssClass: 'alert alert-success', timeout: 3000 });
+        this.router.navigate(["/profile"]);
+      } else {
+        this.flashMessage.show('Something went wrong while deleteing your poll', { cssClass: 'alert alert-danger', timeout: 3000 });
+        return false;
+      }
+    });
   }
 
   openAddModal() {
