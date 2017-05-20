@@ -49,6 +49,10 @@ module.exports.save = function (newPoll, callback) {
   newPoll.save(callback);
 };
 
+module.exports.deletePollByID = function (id, callback) {
+  Poll.deleteOne({ _id: id }, callback);
+}
+
 module.exports.vote = function (pollId, updatedPoll, callback) {
   Poll.findById(pollId, (err, poll) => {
     if (err) {
