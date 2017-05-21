@@ -115,7 +115,6 @@ export class PollDetailComponent implements OnInit {
       // add vote & label and replace arrays with themselves to force rerender
       this.pollToDisplay.labels.push(this.newOption);
       this.pollToDisplay.votes.push(0);
-      // DOESNT RERENDER CORRECTLY IN THE SELECT DROP DOWN ATM!!!
       this.pollToDisplay.labels = this.pollToDisplay.labels.slice();
       this.pollToDisplay.votes = this.pollToDisplay.votes.slice();
 
@@ -148,7 +147,6 @@ export class PollDetailComponent implements OnInit {
   }
  
   shareOnTwitter() {
-    console.log('sHaRe OoN tWiiTaaH');
     window.open(`https://twitter.com/intent/tweet?&text=${this.pollToDisplay.title} (${window.location.href})`, '_blank');
   }
 
