@@ -4,7 +4,7 @@
       <h2 class="header center-align">{{pollToDisplay.title}}</h2>
       <div class="input-field" *ngIf="pollToDisplay && !alreadyVoted">
         <form (ngSubmit)="onVoteSubmit()">
-          <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" materialize="material_select">
+          <select [(ngModel)]="selectedOption" [ngModelOptions]="{standalone: true}" materialize="material_select" [materializeSelectOptions]="pollToDisplay.labels">
             <option value="" disabled selected>Choose your option</option>
             <option *ngFor="let option of pollToDisplay.labels; let i = index" [ngValue]="i" name="option">{{option}}</option>
           </select>
