@@ -84,6 +84,9 @@
 .red-easy {
   background: #ee6e73;
 }
+button.red-easy:hover {
+  background: #f18b8f ;
+}
 .header {
   color: #ee6e73;
 }
