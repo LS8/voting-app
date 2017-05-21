@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PollDetailComponent } from './components/poll-detail/poll-detail.component';
+import { PollCreateComponent } from './components/poll-create/poll-create.component';
 
 const appRoutes: Routes = [
   {
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'polls/new',
+    component: PollCreateComponent
   },
   {
     path: 'polls/:id',
