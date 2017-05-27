@@ -37,6 +37,8 @@ app.use(cors());
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+const port = process.env.PORT || 8080;
+
 // Passport Middleware
 app.use(passport.initialize());
 // app.use(passport.session());
@@ -47,7 +49,6 @@ app.use('/account', account);
 app.use('/profile', profile);
 app.use('/polls', polls);
 
-const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
