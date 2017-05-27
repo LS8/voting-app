@@ -13,7 +13,7 @@ export class AuthService {
   authenticateAccount(account) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('account/authenticate', account, { headers: headers })
+    return this.http.post('api/account/authenticate', account, { headers: headers })
       .map(res => res.json());
   }
 
@@ -22,7 +22,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('profile', { headers: headers })
+    return this.http.get('api/profile', { headers: headers })
       .map(res => res.json());
   }
 
@@ -39,7 +39,7 @@ export class AuthService {
   registerAccount(account) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('account/register', account, { headers: headers })
+    return this.http.post('api/account/register', account, { headers: headers })
       .map(res => res.json());
   }
 
@@ -59,7 +59,7 @@ export class AuthService {
   loadIp() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('account/ip',  { headers: headers })
+    return this.http.get('api/account/ip',  { headers: headers })
       .map(res => res.json());
   }
 

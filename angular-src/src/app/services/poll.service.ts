@@ -13,34 +13,34 @@ export class PollService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post(`profile/newpoll`, newPoll, { headers: headers })
+    return this.http.post(`api/profile/newpoll`, newPoll, { headers: headers })
       .map(res => res.json());
   }
 
   getAllPolls() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(`polls`, { headers: headers })
+    return this.http.get(`api/polls`, { headers: headers })
       .map(res => res.json());
   }
 
   getIndividualPoll(pollId) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(`polls/${pollId}`, { headers: headers })
+    return this.http.get(`api/polls/${pollId}`, { headers: headers })
       .map(res => res.json());
   }
 
   syncVote(pollId, updatedPoll) {
     let headers = new Headers();
-    return this.http.post(`polls/${pollId}`, updatedPoll, { headers: headers})
+    return this.http.post(`api/polls/${pollId}`, updatedPoll, { headers: headers})
       .map(res => res.json());
   }
 
   deletePoll(pollId) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.delete(`polls/${pollId}`, { headers: headers })
+    return this.http.delete(`api/polls/${pollId}`, { headers: headers })
       .map(res => res.json());
   }
 
