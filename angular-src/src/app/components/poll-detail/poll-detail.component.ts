@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { PollService } from '../../services/poll.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MaterializeDirective,MaterializeAction} from "angular2-materialize";
+import { MaterializeDirective,MaterializeAction } from "angular2-materialize";
 
 // TO-DO :
 //         - add new options to poll if logged in
