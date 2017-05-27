@@ -47,9 +47,9 @@ require('./config/authentication').passportStrategy(passport);
 
 
 // Use Routes
-app.use('api/account', account);
-app.use('api/profile', profile);
-app.use('api/polls', polls);
+app.use('/api/account', account);
+app.use('/api/profile', profile);
+app.use('/api/polls', polls);
 
 // Index Route
 app.get('/', (req, res) => {
