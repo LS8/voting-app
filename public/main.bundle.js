@@ -31,7 +31,7 @@ var AuthService = (function () {
     AuthService.prototype.authenticateAccount = function (account) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('account/authenticate', account, { headers: headers })
+        return this.http.post('api/account/authenticate', account, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -39,7 +39,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('profile', { headers: headers })
+        return this.http.get('api/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.loadToken = function () {
@@ -53,7 +53,7 @@ var AuthService = (function () {
     AuthService.prototype.registerAccount = function (account) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('account/register', account, { headers: headers })
+        return this.http.post('api/account/register', account, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeAccountData = function (token, account) {
@@ -70,7 +70,7 @@ var AuthService = (function () {
     AuthService.prototype.loadIp = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('account/ip', { headers: headers })
+        return this.http.get('api/account/ip', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return AuthService;
@@ -454,30 +454,30 @@ var PollService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.post("profile/newpoll", newPoll, { headers: headers })
+        return this.http.post("api/profile/newpoll", newPoll, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PollService.prototype.getAllPolls = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("polls", { headers: headers })
+        return this.http.get("api/polls", { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PollService.prototype.getIndividualPoll = function (pollId) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get("polls/" + pollId, { headers: headers })
+        return this.http.get("api/polls/" + pollId, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PollService.prototype.syncVote = function (pollId, updatedPoll) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        return this.http.post("polls/" + pollId, updatedPoll, { headers: headers })
+        return this.http.post("api/polls/" + pollId, updatedPoll, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PollService.prototype.deletePoll = function (pollId) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.delete("polls/" + pollId, { headers: headers })
+        return this.http.delete("api/polls/" + pollId, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PollService.prototype.loadToken = function () {
