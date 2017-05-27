@@ -44,11 +44,6 @@ app.use(passport.initialize());
 // app.use(passport.session());
 require('./config/authentication').passportStrategy(passport);
 
-// Use Routes
-app.use('/account', account);
-app.use('/profile', profile);
-app.use('/polls', polls);
-
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
@@ -57,6 +52,12 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
+// Use Routes
+app.use('/account', account);
+app.use('/profile', profile);
+app.use('/polls', polls);
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
