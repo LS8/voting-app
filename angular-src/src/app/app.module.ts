@@ -22,6 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PollDetailComponent } from './components/poll-detail/poll-detail.component';
 import { PollCreateComponent } from './components/poll-create/poll-create.component';
+import { PollCreateButtonComponent } from './components/poll-create-button/poll-create-button.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PollCreateComponent } from './components/poll-create/poll-create.compon
     RegisterComponent,
     ProfileComponent,
     PollDetailComponent,
-    PollCreateComponent
+    PollCreateComponent,
+    PollCreateButtonComponent
   ],
   imports: [
     BrowserModule,
