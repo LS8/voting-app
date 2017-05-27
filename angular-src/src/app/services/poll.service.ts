@@ -8,6 +8,22 @@ export class PollService {
 
   constructor(private http: Http) { }
 
+  addPoll(newPoll) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(`http://localhost:3000/profile/newpoll`, newPoll, { headers: headers })
+      .map(res => res.json());
+  }
+
+  getAllPolls() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(`http://localhost:3000/polls/`, { headers: headers })
+      .map(res => res.json());
+  }
+
   getIndividualPoll(pollId) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -26,6 +42,11 @@ export class PollService {
     headers.append('Content-Type', 'application/json');
     return this.http.delete(`http://localhost:3000/polls/${pollId}`, { headers: headers })
       .map(res => res.json());
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
   }
 
 }
