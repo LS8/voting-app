@@ -3,21 +3,21 @@
     <form (ngSubmit)="onPollSubmit()" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input [(ngModel)]="pollTitle" placeholder="Title of your poll" required name="pollTitle" type="text" [ngClass]="isValid(pollTitle)" class="validate">
-          <label for="pollTitle">Title</label>
+          <input [(ngModel)]="title" placeholder="Title of your poll" required name="title" type="text" [ngClass]="isValid(title)" class="validate">
+          <label for="title">Title</label>
         </div>
       </div>
       <div class="row">
         <!--<div class="input-field col s12">
           <input [(ngModel)]="firstOption" (focus)="onFirstOptionFocus()" (blur)="onBlur()" name="firstOption" placeholder="Option 1" required [ngClass]="isValid(options[firstOption])">
         </div>-->
-        <div *ngFor="let option of options; let i = index; trackBy: trackByIndex" class="input-field col s12">
-          <input [(ngModel)]="options[i]" name="{{i}}" placeholder="Option {{i+1}}" [ngClass]="isValid(options[i])">
+        <div *ngFor="let option of labels; let i = index; trackBy: trackByIndex" class="input-field col s12">
+          <input [(ngModel)]="labels[i]" name="{{i}}" placeholder="Option {{i+1}}" [ngClass]="isValid(labels[i])">
         </div>
       </div>
       <div class="row">
         <div class="col s12">
-          <button (click)="addOption()" class="btn waves-effect waves-light red lighten-2">Add Option
+          <button type="button" (click)="addOption()" class="btn waves-effect waves-light red lighten-2">Add Option
           </button>
           <button type="submit" class="btn waves-effect waves-light">Submit
             <i class="material-icons right">send</i>
