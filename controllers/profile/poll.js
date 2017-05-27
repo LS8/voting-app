@@ -5,7 +5,8 @@ module.exports = (req, res) => {
     title: req.body.title,
     author: req.body.author,
     labels: req.body.labels,
-    votes: req.body.votes
+    votes: req.body.votes,
+    alreadyVoted: req.body.alreadyVoted
   });
 
   Poll.save(poll, (err, poll) => {
@@ -13,7 +14,7 @@ module.exports = (req, res) => {
       console.log(err);
       res.json({ success: false, msg: 'Failed to create new poll' });
     } else {
-      res.json({ success: true, msg: 'New poll added' });
+      res.json({ success: true, msg: 'New poll added', poll: poll });
     }
   });
 };
