@@ -12,7 +12,7 @@
           <input [(ngModel)]="firstOption" (focus)="onFirstOptionFocus()" (blur)="onBlur()" name="firstOption" placeholder="Option 1" required [ngClass]="isValid(options[firstOption])">
         </div>-->
         <div *ngFor="let option of labels; let i = index; trackBy: trackByIndex" class="input-field col s12">
-          <input [(ngModel)]="labels[i]" name="{{i}}" placeholder="Option {{i+1}}" [ngClass]="isValid(labels[i])">
+          <input [(ngModel)]="labels[i]" name="{{i}}" placeholder="Option {{i+1}}">
         </div>
       </div>
       <div class="row">
