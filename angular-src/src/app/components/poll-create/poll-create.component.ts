@@ -25,11 +25,6 @@ export class PollCreateComponent implements OnInit {
     this.author = JSON.parse(localStorage.getItem('account')).username;
   }
 
-  isValid(value: boolean) {
-  // //   if (value == undefined) return;
-  //   return value ? "custom-valid" : "custom-invalid";
-  }
-
   onPollSubmit() {
     console.log(this.labels);
     console.log('objectsubmit');

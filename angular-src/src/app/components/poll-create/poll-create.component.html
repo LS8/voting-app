@@ -3,7 +3,7 @@
     <form (ngSubmit)="onPollSubmit()" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input [(ngModel)]="title" placeholder="Title of your poll" required name="title" type="text" [ngClass]="isValid(title)" class="validate">
+          <input [(ngModel)]="title" placeholder="Title of your poll" required name="title" type="text" class="validate">
           <label for="title">Title</label>
         </div>
       </div>
