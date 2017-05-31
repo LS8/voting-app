@@ -26,8 +26,6 @@ export class PollCreateComponent implements OnInit {
   }
 
   onPollSubmit() {
-    console.log(this.labels);
-    console.log('objectsubmit');
     const poll = {
       title: this.title,
       author: this.author,
@@ -36,7 +34,6 @@ export class PollCreateComponent implements OnInit {
       alreadyVoted: []
     };
     this.pollService.addPoll(poll).subscribe(res => {
-      console.log(res);
       if (res.success) {
         this.router.navigate([`/polls/${res.poll._id}`]);
         return;
