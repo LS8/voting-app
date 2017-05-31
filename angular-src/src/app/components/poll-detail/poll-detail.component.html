@@ -35,7 +35,7 @@
             <a materialize="tooltip" class="tooltipped btn-floating blue" (click)="shareOnTwitter()" data-position="top" data-delay="50"
               data-tooltip="Share via twitter"><i class="material-icons">forward</i></a>
           </li>
-          <li>
+          <li *ngIf="userIsAuthor">
             <a materialize="tooltip" class="tooltipped btn-floating red modal-trigger" (click)="openDeleteModal()" data-position="top"
               data-delay="50" data-tooltip="Delete this poll"><i class="material-icons">remove</i></a>
           </li>
