@@ -74,10 +74,7 @@ export class PollDetailComponent implements OnInit {
   checkAlreadyVoted() {
     this.loadUser(() => {
       // user hasn't voted yet
-      if (this.pollToDisplay.alreadyVoted.indexOf(this.user) === -1
-        // for dev purposes only
-        || this.user === 'admin') { 
-
+      if (this.pollToDisplay.alreadyVoted.indexOf(this.user) === -1) {
         this.alreadyVoted = false;
         return false;
       } else {
